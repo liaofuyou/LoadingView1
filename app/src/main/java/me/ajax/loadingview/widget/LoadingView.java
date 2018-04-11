@@ -75,9 +75,9 @@ public class LoadingView extends View {
         initAnimator();
 
         //启动动画
-        post(new Runnable() {
+        setOnClickListener(new OnClickListener() {
             @Override
-            public void run() {
+            public void onClick(View v) {
                 circleAnimator.start();
                 rotateAnimator.start();
                 isStart = true;
@@ -117,13 +117,13 @@ public class LoadingView extends View {
         canvas.save();
         canvas.translate(mWidth / 2, mHeight / 2);
 
-        int circleRadius = !isStart ? dp2Dx(50) : (int) circleAnimator.getAnimatedValue();
+        int circleRadius = !isStart ? dp2Dx(25) : (int) circleAnimator.getAnimatedValue();
         rectF.top = -dp2Dx(50);
         rectF.bottom = dp2Dx(50);
         rectF.left = -circleRadius;
         rectF.right = circleRadius;
 
-        int rotateDegrees = !isStart ? 0 : (int) rotateAnimator.getAnimatedValue();
+        int rotateDegrees = !isStart ? 45 : (int) rotateAnimator.getAnimatedValue();
 
         //绘制
         canvas.drawOval(rectF, linePaint1);
